@@ -1,4 +1,4 @@
-﻿namespace SoriProjectV2.Domain.Entities;
+﻿namespace SoriProjectV2.Domain.Enums;
 
 public enum StatusVenda
 {

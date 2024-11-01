@@ -1,31 +1,42 @@
-﻿using System.Xml.Serialization;
-
-namespace SoriProjectV2.Domain.Entities;
+﻿namespace SoriProjectV2.Domain.Entities;
 
 public class ProdutoVenda
 {
-    public Produto ProdutoTeste { get; set; }
+    public ProdutoVenda(Produto produto, int quantidade)
+    {
+        Produto = produto;
+        ProdutoId = produto.Id;
+        Quantidade = quantidade;
+    }
+
+    public ProdutoVenda()
+    {
+        
+    }
+
+    public Produto Produto { get; set; }
     public int ProdutoId { get; set; }
     public Venda Venda { get; set; }
     public int VendaId { get; set; }
     public int Quantidade { get; set; }
 
-
-    public decimal CalcularValor()
+    public (decimal valorTotal, decimal valorComDesconto) CalcularValor()
     {
-        decimal valorTotal = ProdutoTeste.ValorUnitario * Quantidade;
+        decimal valorTotal;
+        decimal valorComDesconto;
+        valorTotal = valorComDesconto = Produto.ValorUnitario * Quantidade;
         switch (Quantidade)
         {
             case > 10:
-                valorTotal *= 0.8M;
+                valorComDesconto *= 0.8M;
                 break;
             case > 4:
-                valorTotal *= 0.9M;
+                valorComDesconto *= 0.9M;
                 break;
-            default: 
+            default:
                 break;
         }
 
-        return valorTotal;
+        return (valorTotal, valorComDesconto);
     }
 }

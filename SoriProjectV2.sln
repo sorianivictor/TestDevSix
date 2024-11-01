@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoriProjectV2.Api", "SoriProjectV2.Api\SoriProjectV2.Api.csproj", "{1167CEDE-8B41-45B9-827D-61E64998754A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoriProjectV2.Infra", "SoriProjectV2.Data\SoriProjectV2.Infra.csproj", "{545FCB3B-CF63-4291-9CA0-EDE5FE636672}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoriProjectV2.Infra", "SoriProjectV2.Infra\SoriProjectV2.Infra.csproj", "{545FCB3B-CF63-4291-9CA0-EDE5FE636672}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoriProjectV2.Domain", "SoriProjectV2.Domain\SoriProjectV2.Domain.csproj", "{C840461A-7C1D-42FD-B9EB-70F06EA14AFF}"
 EndProject

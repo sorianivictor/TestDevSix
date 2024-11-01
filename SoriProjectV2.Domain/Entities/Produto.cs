@@ -5,6 +5,8 @@ public class Produto
     public int Id { get; set; }
     public Guid ExternalId { get; set; }
     public decimal ValorUnitario { get; set; }
+
+    public ICollection<ProdutoVenda> ProdutoVenda { get; set; }
 }
 
 

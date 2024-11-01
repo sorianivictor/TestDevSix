@@ -1,27 +1,31 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using SoriProjectV2.Domain.Enums;
 
 namespace SoriProjectV2.Domain.Entities;
 
 public class Venda
 {
-    public List<ProdutoVenda> Produtos { get; set; }
+    public int Id { get; set; }
+    public List<ProdutoVenda> ProdutoVendas { get; set; }
     public Guid ClienteId { get; set; }
     public string ClienteNome { get; set; }
     public DateTime Data { get; set; }
     public decimal ValorTotal { get; set; }
     public Guid FilialId { get; set; }
     public string FilialNome { get; set; }
-    [RegularExpression(pattern:"\\d{1,3}\\,\\d{2}")]
     public decimal Desconto { get; set; }
     public StatusVenda Status { get; set; }
 
+    private Venda()
+    {
+        
+    }
     public Venda(Guid clienteId,
         string clienteNome,
         DateTime data,
         Guid filialId, 
         string filialNome,
-        List<ProdutoVenda> produtos,
-        StatusVenda status
+        List<ProdutoVenda> produtoVendas
         )
     {
         ClienteId = clienteId;
@@ -29,12 +33,15 @@ public class Venda
         Data = data;
         FilialId = filialId;
         FilialNome = filialNome;
-        Produtos = produtos;
-        Status = status;
+        ProdutoVendas = produtoVendas;
+        Status = StatusVenda.NaoCancelado;
 
-        foreach (var item in produtos)
+        foreach (var item in produtoVendas)
         {
-
+            var (valorTotal, valorComDesconto) = item.CalcularValor();
+            Desconto += valorTotal - valorComDesconto;
+            ValorTotal += valorTotal;
+            item.Produto = null;
         }
     }
 }
